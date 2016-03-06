@@ -29,7 +29,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @student.save
         if !logged_in?
-          log_in @user
+          log_in @student
         end
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }

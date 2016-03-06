@@ -40,7 +40,6 @@ Class Portal Web Application using Ruby on Rails
 
  - rails server -b $IP -p $PORT (on cloud9)
  - rails server (on local computer)
- - 
  
 * Description of edge cases
  - Instructors cannot be deleted if it is the only instructor in a course
