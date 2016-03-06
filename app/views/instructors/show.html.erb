@@ -1,0 +1,50 @@
+<!--<p id="notice"><%= notice %></p>-->
+<p>
+  <strong>Name:</strong>
+  <%= @instructor.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @instructor.type %>
+</p>
+
+<h2 class="center">Course History</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Course number</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @instructor.teachments.each do |teachment| %>
+          <% course = Course.find_by(id: teachment.course_id)%>
+          <% if course%>
+              <tr>
+                <td><%=course.course_number%></td>
+                <td><%=course.title%></td>
+                <td><%=course.status%></td>
+
+                <%if current_user == @instructor%>
+                  <td><%= link_to 'Show', course_path(course), class: 'btn btn-default btn-sm' %></td>
+                  <td><%= link_to 'Post Material', new_material_path(course_id: course.id), class: 'btn btn-default btn-sm' %></td>
+
+                <%end%>
+              </tr>
+            
+          <%end%>
+      <%end%>
+      </tbody>
+</table>
+
+<!--<%= link_to 'Edit', edit_instructor_path(@instructor) %> |-->
+<!--<%= link_to 'Back', instructors_path %>-->

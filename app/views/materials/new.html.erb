@@ -1,0 +1,8 @@
+<h1>New Material</h1>
+<%course = Course.find(params[:course_id])%>
+<h2> Class number: <%=course.course_number%></h2>
+<h2> Class title: <%=course.title%></h2>
+
+<%= render 'form' %>
+
+<!--<%= link_to 'Back', materials_path %>-->

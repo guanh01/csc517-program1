@@ -1,0 +1,25 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Class Portal", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <%if logged_in?%>
+        
+          <%if current_user.is_a? Admin %>
+            <%= render 'layouts/admin' %>
+          <%end %>
+          
+          <%if current_user.is_a? Student %>
+            <li><%= link_to 'Courses', courses_path %></li>
+          <%end %>
+          <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+

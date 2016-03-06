@@ -1,0 +1,22 @@
+
+<%instructor=@teachment.instructor%>
+<%course = @teachment.course%>
+<p>
+  <strong>Instructor name:</strong>
+  <%= instructor.name %>
+</p>
+<p>
+  <strong>Instructor email:</strong>
+  <%= instructor.email %>
+</p>
+<p>
+  <strong>Course number:</strong>
+  <%= course.course_number %>
+</p>
+<p>
+  <strong>Course title:</strong>
+  <%= course.title %>
+</p>
+
+<!--<%= link_to 'Edit', edit_teachment_path(@teachment) %> |-->
+<!--<%= link_to 'Back', teachments_path %>-->

@@ -1,0 +1,54 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @student.type %>
+</p>
+
+
+<h2 class="center">Course History</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Course number</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Grade</th>
+        <th>Enrollment</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @student.enrollments.each do |enrollment| %>
+          <% course = Course.find_by(id: enrollment.course_id)%>
+          <% if (enrollment.status != "Denied") && course%>
+              <tr>
+                <td><%=course.course_number%></td>
+                <td><%=course.title%></td>
+                <td><%=course.status%></td>
+                <td><%=enrollment.grade%></td>
+                <td><%=enrollment.status%></td>
+                <%if current_user == @student%>
+                <td><%= link_to 'Show', course_path(course), class: 'btn btn-default btn-sm' %></td>
+                <td><%= link_to 'Drop Course', enrollment, class: 'btn btn-default btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%end%>
+              </tr>
+            
+          <%end%>
+      <%end%>
+      </tbody>
+</table>
+
+
+<!--<%= link_to 'Edit', edit_student_path(@student) %> |-->
+<!--<%= link_to 'Back', students_path %>-->

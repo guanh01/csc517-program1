@@ -1,0 +1,7 @@
+<h1>New Enrollment</h1>
+<% student = Student.find(params[:student_id])%>
+<h2>Student Name: <%=student.name %></h2>
+<h2>Student Email: <%=student.email %></h2>
+<%= render 'form' %>
+
+<%= link_to 'Back', enrollments_path %>

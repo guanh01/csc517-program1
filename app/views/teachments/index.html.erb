@@ -1,0 +1,28 @@
+
+<h1>Listing Teachments</h1>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Instructor</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teachments.each do |teachment| %>
+      <tr>
+        <td><%= teachment.instructor_id %></td>
+        <td><%= teachment.course_id %></td>
+        <td><%= link_to 'Show', teachment , class: 'btn btn-default btn-sm'%></td>
+        <td><%= link_to 'Edit', edit_teachment_path(teachment) , class: 'btn btn-default btn-sm'%></td>
+        <td><%= link_to 'Destroy', teachment, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-default btn-sm'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teachment', new_teachment_path %>
