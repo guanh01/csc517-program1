@@ -13,7 +13,9 @@
           <%if current_user.is_a? Student %>
             <li><%= link_to 'Courses', courses_path %></li>
           <%end %>
-          <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <%if current_user.email != "superadmin@example.com"%>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <%end%>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>

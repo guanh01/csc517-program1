@@ -27,6 +27,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+
   end
 
   # GET /courses/1/edit
@@ -40,6 +41,7 @@ class CoursesController < ApplicationController
     
     respond_to do |format|
       if @course.save
+        @teachment = Teachment.create(course_id: @course.id, instructor_id: params[:instructor_id])
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
