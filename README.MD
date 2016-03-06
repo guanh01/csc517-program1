@@ -40,3 +40,10 @@ Class Portal Web Application using Ruby on Rails
 
  - rails server -b $IP -p $PORT (on cloud9)
  - rails server (on local computer)
+ - 
+ 
+* Description of edge cases
+ - Instructors cannot be deleted if it is the only instructor in a course
+ - Super admin profile cannot be modified
+ - A student can be deleted even though he is enrolled in a course
+ - An instructor can be deleted even though he is in charge of some courses. However, if the instructor is the only instructor for a course, he cannot be deleted by admins. 
