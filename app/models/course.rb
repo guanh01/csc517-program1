@@ -31,8 +31,8 @@ class Course < ActiveRecord::Base
     end
     if searchby =="Course number"
       searchby = "course_number"
-    end
-    if searchby =="Status"
+      return Course.where(course_number: search)
+    elsif searchby =="Status"
       where(status: search)
     else
       where("#{searchby} LIKE ?", "%#{search}%")
